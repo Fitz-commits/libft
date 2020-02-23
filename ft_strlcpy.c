@@ -20,9 +20,7 @@ unsigned int	ft_strlcpy(char *dest, const char *src, size_t size)
 	n = 0;
 	i = 0;
 	if (dest == 0 || src == 0)
-	{
 		return (0);
-	}
 	while (src[n])
 		n++;
 	if (size == 0)

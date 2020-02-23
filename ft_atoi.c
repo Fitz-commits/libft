@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
 static int				char_is_alpha(char c)
 {
 	if (c >= 48 && c <= 57)
@@ -38,7 +35,7 @@ static int				char_to_int(const char *str, int i, int neg)
 	return (final);
 }
 
-static int				ft_atoi(const char *str)
+int						ft_atoi(const char *str)
 {
 	int			i;
 	int			neg;
@@ -57,11 +54,4 @@ static int				ft_atoi(const char *str)
 	}
 	s = char_to_int(str, i, neg) * neg;
 	return (s);
-}
-int main(int ac, char **av)
-
-{
-	(void)ac;
-	printf("%d\n", atoi(av[1]));
-	printf("%d\n", ft_atoi(av[1]));
 }

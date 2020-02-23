@@ -17,13 +17,9 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
 
-	if (fd > 0)
+	i = 0;
+	if (fd > 0 && s)
 	{
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar_fd(s[i], fd);
-			i++;
-		}
+		i += write(fd, s, ft_strlen(s));
 	}
 }

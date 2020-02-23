@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_get_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 15:34:26 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/07 15:34:33 by cdelaby          ###   ########.fr       */
+/*   Created: 2020/01/08 08:41:37 by cdelaby           #+#    #+#             */
+/*   Updated: 2020/01/08 08:41:40 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strndup(const char *src, size_t n)
+int						get_size(long long nbr, int base)
 {
-	char *dest;
+	int i;
 
-	if (!(dest = malloc(sizeof(char) * (n + 1))))
-		return (0);
-	dest = ft_strncpy(dest, src, n);
-	dest[n] = 0;
-	return (&*dest);
+	i = 1;
+	while (nbr / base)
+	{
+		i++;
+		nbr = nbr / base;
+	}
+	return (i);
 }

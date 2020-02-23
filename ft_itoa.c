@@ -6,29 +6,15 @@
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 08:50:43 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/08 11:38:24 by cdelaby          ###   ########.fr       */
+/*   Updated: 2020/01/08 08:41:03 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static int				get_size(int nbr)
+static long				power(long nbr, int base)
 {
-	int i;
-
-	i = 1;
-	while (nbr / 10)
-	{
-		i++;
-		nbr = nbr / 10;
-	}
-	return (i);
-}
-
-static int				power(int nbr, int base)
-{
-	int j;
+	long j;
 
 	j = nbr;
 	if (base == 1)
@@ -43,7 +29,7 @@ static int				power(int nbr, int base)
 	return (nbr);
 }
 
-static int				checksign(int nbr)
+static int				checksign(long nbr)
 {
 	if (nbr >= 0)
 		return (0);
@@ -51,17 +37,17 @@ static int				checksign(int nbr)
 		return (1);
 }
 
-char					*ft_itoa(int nbr)
+char					*ft_itoa(long nbr)
 {
 	int				i;
 	int				size;
-	unsigned int	unbr;
+	unsigned long	unbr;
 	char			*cnbr;
 	int				placeneg;
 
 	i = 0;
 	placeneg = checksign(nbr);
-	size = get_size(nbr);
+	size = get_size(nbr, 10);
 	if (!(cnbr = malloc(sizeof(char) * (size + 1 + placeneg))))
 		return (0);
 	if (placeneg == 1)
