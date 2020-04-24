@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:15:52 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/09 11:15:56 by cdelaby          ###   ########.fr       */
+/*   Created: 2019/10/10 13:23:42 by cdelaby           #+#    #+#             */
+/*   Updated: 2019/10/10 13:23:45 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+t_list		*ft_lstnew(void *content)
 {
-	unsigned char		*dstr;
-	unsigned char		*sstr;
-	size_t				i;
+	t_list *newl;
 
-	dstr = (unsigned char*)dest;
-	sstr = (unsigned char*)src;
-	if (dest == 0 && src == 0)
-		return (0);
-	i = 0;
-	while (i < n)
+	if (content)
 	{
-		dstr[i] = sstr[i];
-		if (dstr[i] == (unsigned char)c)
-		{
-			return (&dstr[i + 1]);
-		}
-		i++;
+		if (!(newl = (t_list*)malloc(sizeof(t_list))))
+			return (0);
+		newl->content = (void*)(content);
+		newl->next = 0;
+		return (newl);
 	}
-	return (0);
+	return (NULL);
 }

@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:15:52 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/09 11:15:56 by cdelaby          ###   ########.fr       */
+/*   Created: 2019/10/08 09:36:47 by cdelaby           #+#    #+#             */
+/*   Updated: 2019/10/08 09:36:50 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "..//libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+const char	*ft_strstr(const char *str, const char *to_find)
 {
-	unsigned char		*dstr;
-	unsigned char		*sstr;
-	size_t				i;
+	int i;
+	int a;
+	int j;
 
-	dstr = (unsigned char*)dest;
-	sstr = (unsigned char*)src;
-	if (dest == 0 && src == 0)
-		return (0);
 	i = 0;
-	while (i < n)
+	j = 0;
+	a = 0;
+	while (str[i])
 	{
-		dstr[i] = sstr[i];
-		if (dstr[i] == (unsigned char)c)
-		{
-			return (&dstr[i + 1]);
-		}
+		a = i;
+		j = 0;
+		if (str[i] == to_find[0])
+			while (str[a] == to_find[j])
+			{
+				if (j == ft_strlen(to_find) - 1)
+					return (&str[i]);
+				a++;
+				j++;
+			}
 		i++;
 	}
-	return (0);
+	if (ft_strlen(to_find) == 0)
+		return (str);
+	else
+		return (0);
 }

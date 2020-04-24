@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:15:52 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/09 11:15:56 by cdelaby          ###   ########.fr       */
+/*   Created: 2019/10/07 15:25:50 by cdelaby           #+#    #+#             */
+/*   Updated: 2019/10/16 15:04:06 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char		*dstr;
-	unsigned char		*sstr;
-	size_t				i;
+	char				*subs;
+	unsigned int		i;
 
-	dstr = (unsigned char*)dest;
-	sstr = (unsigned char*)src;
-	if (dest == 0 && src == 0)
+	if (s == 0)
+		return (NULL);
+	if (len > (unsigned)ft_strlen(s) || start > (unsigned)ft_strlen(s))
+		return (ft_strdup(""));
+	if (!(subs = malloc(sizeof(char) * (len + 1))))
 		return (0);
 	i = 0;
-	while (i < n)
+	while (i < len && s[i + start])
 	{
-		dstr[i] = sstr[i];
-		if (dstr[i] == (unsigned char)c)
-		{
-			return (&dstr[i + 1]);
-		}
+		subs[i] = s[start + i];
 		i++;
 	}
-	return (0);
+	subs[i] = 0;
+	return (subs);
 }

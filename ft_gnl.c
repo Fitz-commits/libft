@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#define OPEN_MAX 10000
 static int			search_buf(char *buf)
 {
 	int i;

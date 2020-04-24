@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 11:15:52 by cdelaby           #+#    #+#             */
-/*   Updated: 2019/10/09 11:15:56 by cdelaby          ###   ########.fr       */
+/*   Created: 2019/10/14 13:47:53 by cdelaby           #+#    #+#             */
+/*   Updated: 2019/10/14 13:47:55 by cdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void*))
 {
-	unsigned char		*dstr;
-	unsigned char		*sstr;
-	size_t				i;
+	t_list	*new;
+	t_list	*node;
+	t_list	*begin;
 
-	dstr = (unsigned char*)dest;
-	sstr = (unsigned char*)src;
-	if (dest == 0 && src == 0)
-		return (0);
-	i = 0;
-	while (i < n)
+	node = 0;
+	if (lst && f)
 	{
-		dstr[i] = sstr[i];
-		if (dstr[i] == (unsigned char)c)
+		begin = ft_lstnew(f(lst->content));
+		node = begin;
+		lst = lst->next;
+		while (lst)
 		{
-			return (&dstr[i + 1]);
+			new = ft_lstnew(f(lst->content));
+			node->next = new;
+			node = new;
+			lst = lst->next;
 		}
-		i++;
+		return (begin);
 	}
-	return (0);
+	else
+		return (0);
 }

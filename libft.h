@@ -62,7 +62,8 @@ char				*ft_strncat(char *dest, const char *src, size_t nb);
 char				*ft_strcat(char *dest, const char *src);
 int					ft_strcmp(const char *s1, const char *s2);
 int					get_size(long long nbr, int base);
-
+int					ft_ispace(char c);
+char				**ft_splitq(const char *str);
 typedef	struct		s_list
 {
 	void			*content;
